@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../styles/styles.css">
+        <link rel="stylesheet" href="../styles/fontawesome/css/all.css">
+        <link rel="shortcut icon" href="">
+        <title>Datenbank-Management</title>
+    </head>
+    <body>
+        <main>
+            <div class="content">
+                <a href="/">
+                    <i class="fa-solid fa-angle-left"></i>
+                </a>
+                <h3 id="tags-headline">Tags</h3>
+                <br>
+                
+                <div class="buttons">
+                    <div class="add">
+                        <button id="add-new-FAQ"><i title="Add FAQ" class="fa-solid fa-plus"></i></button>
+                    </div>
+                    <input type="text" class="input-search" id="input-search-tags" onkeyup="filter_tags()" placeholder="Type to Search...">
+                    <div id="myModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h4 id="modal-create-tag-headline">Create new tag</h4>
+                            <form action="create-new-tag" method="post" id="create-new-tag">
+                                <input type="textfield" name="newTag" id="new-Data-tag" placeholder="" />
+                                <br>
+                                <input type="submit" value="Create" id="sub-new-tag"/>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="myModal2" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h4 id="modal-create-tag-headline">Assign group</h4>
+                            <form action="assign-group" method="post" id="assign-group">
+                                <input type="button" id="assign-tag" value="">
+                                <br>
+                                <div class="dropdown-assign">
+                                    <input type="text" id="assign-tag-text" value="" name="name">
+                                    <label for="groups">Choose a group:</label>
+                                    <select name="group" id="group-dropdown" required>
+                                        <option value="" disabled selected>Select new group</option>
+                                        <option value="none">None</option>
+                                    </select>
+                                </div>
+                               
+                                <br>
+                                <input type="submit" value="Create" id="sub-new-group"/>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="edit">
+                        <button id="edit-faq" class="edit-button">Bearbeiten</button>
+                    </div>
+                </div>
+                <div class="faq">
+                    <form action="showTagDetail" method="post" id="showTagDetail-form">
+                        <ul id="faq-list">
+                            
+                        </ul>
+                        <input type="text" id="selected-tag" name="tagName" value=""/>
+                    </form>
+                </div>
+                <form action="save-changings-tags" method="post">
+                    <input type="text" id="saved-tags" value="" name="changes" />
+                    <input type="submit" id="submit-edit" value="Speichern" />
+                </form>
+            </div>
+        </main>
+    </body>
+    <script>
+        let tags = <%- JSON.stringify(tags) %>;
+        let groups = <%- JSON.stringify(groups) %>;
+     
+    </script>
+    <script src="../scripts/main.js"></script>
+</html>
